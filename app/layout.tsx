@@ -34,7 +34,19 @@ export default function RootLayout({
 }) {
   return (
     <html suppressHydrationWarning lang="en">
-      <head />
+      <head>
+        <meta content="Telegram graph link generator" property="og:title" />
+        <meta
+          content="Make the telegram link beautiful"
+          property="og:description"
+        />
+        <meta
+          content="https://tg-graph-gen.vercel.app/images/icon.png"
+          property="og:image"
+        />
+        <meta content="https://tg-graph-gen.vercel.app" property="og:url" />
+        <meta content="article" property="og:type" />
+      </head>
       <body
         className={clsx(
           "min-h-screen bg-background font-sans antialiased",
