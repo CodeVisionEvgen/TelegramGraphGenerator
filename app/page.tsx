@@ -1,55 +1,121 @@
-import { Link } from "@nextui-org/link";
-import { Snippet } from "@nextui-org/snippet";
+"use client";
+import { Input } from "@nextui-org/input";
+import { useState } from "react";
+import { Select, SelectItem } from "@nextui-org/select";
+import { Button } from "@nextui-org/button";
 import { Code } from "@nextui-org/code";
-import { button as buttonStyles } from "@nextui-org/theme";
 
-import { siteConfig } from "@/config/site";
-import { title, subtitle } from "@/components/primitives";
-import { GithubIcon } from "@/components/icons";
-
+import { title } from "@/components/primitives";
+import { GraphQuery } from "@/types";
+import { GraphTypes } from "@/config/graph";
+import TelegramCard from "@/components/TelegramCard";
+import { CodeIcon } from "@/components/icons";
 export default function Home() {
+  const [graphQuery, setGraphQuery] = useState<GraphQuery>();
+
   return (
-    <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
-      <div className="inline-block max-w-lg text-center justify-center">
-        <h1 className={title()}>Make&nbsp;</h1>
-        <h1 className={title({ color: "violet" })}>beautiful&nbsp;</h1>
-        <br />
-        <h1 className={title()}>
-          websites regardless of your design experience.
-        </h1>
-        <h2 className={subtitle({ class: "mt-4" })}>
-          Beautiful, fast and modern React UI library.
-        </h2>
-      </div>
+    <section className="flex flex-col rounded items-center justify-center gap-4 py-8 md:py-10">
+      <h1 className={title() + " text-primary"}>
+        Make the telegram link beautiful
+      </h1>
 
-      <div className="flex gap-3">
-        <Link
-          isExternal
-          className={buttonStyles({
-            color: "primary",
-            radius: "full",
-            variant: "shadow",
-          })}
-          href={siteConfig.links.docs}
-        >
-          Documentation
-        </Link>
-        <Link
-          isExternal
-          className={buttonStyles({ variant: "bordered", radius: "full" })}
-          href={siteConfig.links.github}
-        >
-          <GithubIcon size={20} />
-          GitHub
-        </Link>
+      <div className=" w-11/12 flex bg-base-200 rounded-lg p-5">
+        <div className="w-full grid gap-2">
+          <Input
+            color="primary"
+            label="Page title"
+            variant="underlined"
+            onValueChange={(value: string) =>
+              setGraphQuery((lastQuery: GraphQuery | undefined) => ({
+                ...(lastQuery || {}),
+                title: value,
+              }))
+            }
+          />
+          <Input
+            color="primary"
+            label="Description"
+            variant="underlined"
+            onValueChange={(value: string) =>
+              setGraphQuery((lastQuery: GraphQuery | undefined) => ({
+                ...(lastQuery || {}),
+                description: value,
+              }))
+            }
+          />
+          <Input
+            color="primary"
+            label="Page url"
+            variant="underlined"
+            onValueChange={(value: string) =>
+              setGraphQuery((lastQuery: GraphQuery | undefined) => ({
+                ...(lastQuery || {}),
+                url: value,
+              }))
+            }
+          />
+          <Input
+            color="primary"
+            label="Media link"
+            variant="underlined"
+            onValueChange={(value: string) => {
+              /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/.test(
+                value,
+              ) &&
+                setGraphQuery((lastQuery: GraphQuery | undefined) => ({
+                  ...(lastQuery || {}),
+                  mediaLink: value,
+                }));
+            }}
+          />
+          <Select
+            color="primary"
+            defaultSelectedKeys={["article"]}
+            label="Type"
+            placeholder="Type"
+            variant="underlined"
+            onChange={({ target }) => {
+              setGraphQuery((lastQuery: GraphQuery | undefined) => ({
+                ...(lastQuery || {}),
+                type: target.value,
+              }));
+            }}
+          >
+            {GraphTypes.map((type) => (
+              <SelectItem key={type.key}>{type.label}</SelectItem>
+            ))}
+          </Select>
+          <Button
+            className="mt-4"
+            color="primary"
+            startContent={<CodeIcon fill="currentColor" />}
+            onClick={() => {
+              navigator.clipboard.writeText(`
+<meta property="og:title" content="${graphQuery?.title ? graphQuery?.title : "Page title"}">
+<meta property="og:description" content="${graphQuery?.description ? graphQuery?.description : "Your description"}">
+<meta property="og:image" content="${graphQuery?.mediaLink ? graphQuery?.mediaLink : "telegram.image"}">
+<meta property="og:url" content="${graphQuery?.url ? graphQuery?.url : "telegram.link"}">
+<meta property="og:type" content="${graphQuery?.type ? graphQuery?.type : "article"}">
+          `);
+            }}
+          >
+            Copy Code
+          </Button>
+        </div>
+        <div className=" m-4 flex justify-center w-full items-center">
+          <TelegramCard graphQuery={graphQuery} />
+        </div>
       </div>
-
-      <div className="mt-8">
-        <Snippet hideCopyButton hideSymbol variant="bordered">
-          <span>
-            Get started by editing <Code color="primary">app/page.tsx</Code>
-          </span>
-        </Snippet>
+      <div className=" w-11/12 flex justify-center bg-base-200 rounded-lg p-5">
+        <Code className="whitespace-pre" color="secondary">
+          {`
+<meta property="og:title" content="${graphQuery?.title ? graphQuery?.title : "Page title"}">
+<meta property="og:description" content="${graphQuery?.description ? graphQuery?.description : "Your description"}">
+<meta property="og:image" content="${graphQuery?.mediaLink ? graphQuery?.mediaLink : "telegram.image"}">
+<meta property="og:url" content="${graphQuery?.url ? graphQuery?.url : "telegram.link"}">
+<meta property="og:type" content="${graphQuery?.type ? graphQuery?.type : "article"}">
+          `}
+        </Code>
       </div>
     </section>
   );
