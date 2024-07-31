@@ -13,32 +13,33 @@ export default function TelegramCard({
       <a className=" underline text-sm" href={graphQuery?.url || "#"}>
         {graphQuery?.url || "https://tg-graph-gen.vercel.app/"}
       </a>
-      <div className=" grid border-l-3 bg-white bg-opacity-5 border-white pl-2 p-2">
-        <div className="flex">
-          <div className="w-11/12">
-            <p className="font-bold text-sm overflow-hidden whitespace-nowrap  text-ellipsis max-w-[180px]">
-              {graphQuery?.url
-                ? /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/.test(
-                  graphQuery.url,
-                )
-                  ? new URL(graphQuery?.url).hostname
-                  : graphQuery.url
-                : "tg-graph-gen.vercel.app"}
-            </p>
-            <p className="font-bold text-sm max-w-[180px]">
-              {graphQuery?.title || "Page title"}
-            </p>
-          </div>
-          <Image
-            alt="icon"
-            height={60}
-            src={
-              graphQuery?.mediaLink ? graphQuery?.mediaLink : "/images/icon.png"
-            }
-            width={60}
-          />
+      <div className=" flex justify-between border-l-3 bg-white bg-opacity-5 border-white pl-2 p-2">
+        <div className="w-11/12">
+          <p className="font-bold text-sm overflow-hidden whitespace-nowrap  text-ellipsis max-w-[180px]">
+            {graphQuery?.url
+              ? /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/.test(
+                graphQuery.url,
+              )
+                ? new URL(graphQuery?.url).hostname
+                : graphQuery.url
+              : "tg-graph-gen.vercel.app"}
+          </p>
+          <p className="font-bold text-sm text-wrap break-words max-w-[180px]">
+            {graphQuery?.title || "Page title"}
+          </p>
+          <p className="max-w-[180px] mb-1 text-wrap break-words text-sm">
+            {graphQuery?.description || "Your description"}
+          </p>
         </div>
-        <p>{graphQuery?.description || "Your description"}</p>
+        <Image
+          alt="icon"
+          className=" w-[60px] h-[60px] bg-white"
+          height={60}
+          src={
+            graphQuery?.mediaLink ? graphQuery?.mediaLink : "/images/icon.png"
+          }
+          width={60}
+        />
       </div>
     </div>
   );
