@@ -19,7 +19,7 @@ export default function Home() {
         Make the telegram link beautiful
       </h1>
 
-      <div className=" w-11/12 flex bg-base-200 rounded-lg p-5">
+      <div className=" w-11/12 flex max-md:flex-col-reverse max-md:items-center bg-base-200 rounded-lg p-5">
         <div className="w-full grid gap-2">
           <Input
             color="primary"
@@ -93,8 +93,8 @@ export default function Home() {
               navigator.clipboard.writeText(`
 <meta property="og:title" content="${graphQuery?.title ? graphQuery?.title : "Page title"}">
 <meta property="og:description" content="${graphQuery?.description ? graphQuery?.description : "Your description"}">
-<meta property="og:image" content="${graphQuery?.mediaLink ? graphQuery?.mediaLink : "telegram.image"}">
-<meta property="og:url" content="${graphQuery?.url ? graphQuery?.url : "telegram.link"}">
+<meta property="og:image" content="${graphQuery?.mediaLink ? graphQuery?.mediaLink : "https://tg-graph-gen.vercel.app/images/icon.png"}">
+<meta property="og:url" content="${graphQuery?.url ? graphQuery?.url : "https://tg-graph-gen.vercel.app/"}">
 <meta property="og:type" content="${graphQuery?.type ? graphQuery?.type : "article"}">
           `);
             }}
@@ -107,13 +107,13 @@ export default function Home() {
         </div>
       </div>
       <div className=" w-11/12 flex justify-center bg-base-200 rounded-lg p-5">
-        <Code className="whitespace-pre" color="secondary">
+        <Code className="whitespace-pre max-md:text-wrap" color="secondary">
           {`
 <meta property="og:title" content="${graphQuery?.title ? graphQuery?.title : "Page title"}">
 <meta property="og:description" content="${graphQuery?.description ? graphQuery?.description : "Your description"}">
-<meta property="og:image" content="${graphQuery?.mediaLink ? graphQuery?.mediaLink : "telegram.image"}">
-<meta property="og:url" content="${graphQuery?.url ? graphQuery?.url : "telegram.link"}">
-<meta property="og:type" content="${graphQuery?.type ? graphQuery?.type : "article"}">
+<meta property="og:image" content="${graphQuery?.mediaLink ? graphQuery?.mediaLink : "https://tg-graph-gen.vercel.app/images/icon.png"}">
+<meta property="og:url" content="${graphQuery?.url ? graphQuery?.url : " https://tg-graph-gen.vercel.app/"}">
+<meta property="og:type" content="${graphQuery?.type ? graphQuery?.type : " article"}">
           `}
         </Code>
       </div>

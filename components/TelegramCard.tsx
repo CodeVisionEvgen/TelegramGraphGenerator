@@ -11,7 +11,7 @@ export default function TelegramCard({
   return (
     <div className="grid w-[300px] gap-[5px] bg-gradient-to-b from-purple-600 to-base-100 grad p-2">
       <a className=" underline text-sm" href={graphQuery?.url || "#"}>
-        {graphQuery?.url || "http://localhost"}
+        {graphQuery?.url || "https://tg-graph-gen.vercel.app/"}
       </a>
       <div className=" grid border-l-3 bg-white bg-opacity-5 border-white pl-2 p-2">
         <div className="flex">
@@ -23,7 +23,7 @@ export default function TelegramCard({
                 )
                   ? new URL(graphQuery?.url).hostname
                   : graphQuery.url
-                : "localhost"}
+                : "tg-graph-gen.vercel.app"}
             </p>
             <p className="font-bold text-sm max-w-[180px]">
               {graphQuery?.title || "Page title"}
