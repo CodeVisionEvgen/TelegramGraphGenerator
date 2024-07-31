@@ -20,7 +20,7 @@ export default function Home() {
       </h1>
 
       <div className=" w-11/12 flex max-md:flex-col-reverse max-md:items-center bg-base-200 rounded-lg p-5">
-        <div className="w-full grid gap-2">
+        <div className="w-full grid gap-2 h-max">
           <Input
             color="primary"
             label="Page title"
@@ -107,7 +107,10 @@ export default function Home() {
         </div>
       </div>
       <div className=" w-11/12 flex justify-center bg-base-200 rounded-lg p-5">
-        <Code className="whitespace-pre max-md:text-wrap" color="secondary">
+        <Code
+          className="whitespace-pre max-w-full text-wrap break-words max-md:text-wrap"
+          color="secondary"
+        >
           {`
 <meta property="og:title" content="${graphQuery?.title ? graphQuery?.title : "Page title"}">
 <meta property="og:description" content="${graphQuery?.description ? graphQuery?.description : "Your description"}">

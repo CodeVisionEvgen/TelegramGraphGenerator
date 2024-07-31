@@ -10,7 +10,10 @@ export default function TelegramCard({
 }) {
   return (
     <div className="grid w-[300px] gap-[5px] bg-gradient-to-b from-purple-600 to-base-100 grad p-2">
-      <a className=" underline text-sm" href={graphQuery?.url || "#"}>
+      <a
+        className=" text-wrap break-words underline text-sm w-[285px]"
+        href={graphQuery?.url || "#"}
+      >
         {graphQuery?.url || "https://tg-graph-gen.vercel.app/"}
       </a>
       <div className=" flex justify-between border-l-3 bg-white bg-opacity-5 border-white pl-2 p-2">
