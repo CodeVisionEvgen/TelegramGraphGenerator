@@ -116,7 +116,7 @@ export default function Home() {
 <meta property="og:description" content="${graphQuery?.description ? graphQuery?.description : "Your description"}">
 <meta property="og:image" content="${graphQuery?.mediaLink ? graphQuery?.mediaLink : "https://tg-graph-gen.vercel.app/images/icon.png"}">
 <meta property="og:url" content="${graphQuery?.url ? graphQuery?.url : " https://tg-graph-gen.vercel.app/"}">
-<meta property="og:type" content="${graphQuery?.type ? graphQuery?.type : " article"}">
+<meta property="og:type" content="${graphQuery?.type ? graphQuery?.type : "article"}">
           `}
         </Code>
       </div>
