@@ -23,6 +23,40 @@ export const Logo: React.FC<IconSvgProps> = ({
     />
   </svg>
 );
+export const SmartphoneIcon: React.FC<IconSvgProps> = ({
+  size = 36,
+  width,
+  height,
+  ...props
+}) => (
+  <svg
+    fill="#5f6368"
+    height="24px"
+    viewBox="0 -960 960 960"
+    width="24px"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path d="M280-40q-33 0-56.5-23.5T200-120v-720q0-33 23.5-56.5T280-920h400q33 0 56.5 23.5T760-840v720q0 33-23.5 56.5T680-40H280Zm0-120v40h400v-40H280Zm0-80h400v-480H280v480Zm0-560h400v-40H280v40Zm0 0v-40 40Zm0 640v40-40Z" />
+  </svg>
+);
+export const ComputerIcon: React.FC<IconSvgProps> = ({
+  size = 36,
+  width,
+  height,
+  ...props
+}) => (
+  <svg
+    fill="#5f6368"
+    height="24px"
+    viewBox="0 -960 960 960"
+    width="24px"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path d="M40-120v-80h880v80H40Zm120-120q-33 0-56.5-23.5T80-320v-440q0-33 23.5-56.5T160-840h640q33 0 56.5 23.5T880-760v440q0 33-23.5 56.5T800-240H160Zm0-80h640v-440H160v440Zm0 0v-440 440Z" />
+  </svg>
+);
 export const CodeIcon: React.FC<IconSvgProps> = ({
   size = 36,
   width,

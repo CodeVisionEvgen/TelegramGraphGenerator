@@ -24,11 +24,11 @@ module.exports = {
 
             "primary-content": "#201047",
 
-            secondary: "#54c5f2",
+            secondary: "#8d16f5",
 
-            "secondary-focus": "#88d7f7",
+            "secondary-focus": "#8d16f5",
 
-            "secondary-content": "#201047",
+            "secondary-content": "#8d16f5",
 
             accent: "#f3cc30",
 
@@ -68,11 +68,11 @@ module.exports = {
 
             "primary-content": "#201047",
 
-            secondary: "#54c5f2",
+            secondary: "#8d16f5",
 
-            "secondary-focus": "#88d7f7",
+            "secondary-focus": "#8d14f5",
 
-            "secondary-content": "#201047",
+            "secondary-content": "#8d12f5",
 
             accent: "#f3cc30",
 

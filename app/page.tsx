@@ -4,12 +4,16 @@ import { useState } from "react";
 import { Select, SelectItem } from "@nextui-org/select";
 import { Button } from "@nextui-org/button";
 import { Code } from "@nextui-org/code";
+import { Tabs, Tab } from "@nextui-org/tabs";
 
 import { title } from "@/components/primitives";
 import { GraphQuery } from "@/types";
 import { GraphTypes } from "@/config/graph";
-import TelegramCard from "@/components/TelegramCard";
-import { CodeIcon } from "@/components/icons";
+import { CodeIcon, ComputerIcon, SmartphoneIcon } from "@/components/icons";
+import {
+  TelegramCardSmartphone,
+  TelegramCardPC,
+} from "@/components/TelegramCard";
 export default function Home() {
   const [graphQuery, setGraphQuery] = useState<GraphQuery>();
 
@@ -102,8 +106,19 @@ export default function Home() {
             Copy Code
           </Button>
         </div>
-        <div className=" m-4 flex justify-center w-full items-center">
-          <TelegramCard graphQuery={graphQuery} />
+        <div className=" flex flex-col justify-start w-full items-center gap-4">
+          <Tabs
+            className="flex justify-center"
+            color="secondary"
+            variant="solid"
+          >
+            <Tab className="text-white" title={<SmartphoneIcon fill="white" />}>
+              <TelegramCardSmartphone graphQuery={graphQuery} />
+            </Tab>
+            <Tab className="text-white" title={<ComputerIcon fill="white" />}>
+              <TelegramCardPC graphQuery={graphQuery} />
+            </Tab>
+          </Tabs>
         </div>
       </div>
       <div className=" w-11/12 flex justify-center bg-base-200 rounded-lg p-5">
